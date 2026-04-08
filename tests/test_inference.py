@@ -1,0 +1,72 @@
+"""Tests for the baseline inference script."""
+
+from __future__ import annotations
+
+import os
+import sys
+from types import SimpleNamespace
+
+ROOT = os.path.join(os.path.dirname(__file__), "..")
+if ROOT not in sys.path:
+    sys.path.insert(0, ROOT)
+
+import inference
+
+
+class FakeCompletions:
+    def __init__(self, choices: list[str]) -> None:
+        self._choices = choices
+        self._index = 0
+
+    def create(self, **_: object) -> SimpleNamespace:
+        choice = self._choices[self._index]
+        self._index += 1
+        return SimpleNamespace(
+            choices=[
+                SimpleNamespace(
+                    message=SimpleNamespace(content=f'{{"click_link_id": "{choice}"}}')
+                )
+            ]
+        )
+
+
+class FakeClient:
+    def __init__(self, choices: list[str]) -> None:
+        self.chat = SimpleNamespace(completions=FakeCompletions(choices))
+
+
+def test_task_scores_always_stay_strictly_inside_open_interval():
+    failing_result = inference.run_task(None, None, "easy", mode="heuristic")
+
+    assert 0.0 < failing_result["score"] < 1.0
+
+
+def test_aggregate_score_is_clamped_inside_open_interval():
+    assert inference.normalize_score(0.0) == 0.01
+    assert inference.normalize_score(1.0) == 0.99
+
+
+def test_run_task_completes_with_mocked_openai_compatible_client():
+    client = FakeClient(["home_support", "support_contact"])
+    result = inference.run_task(client, "fake-model", "easy", mode="agent")
+
+    assert result["task_id"] == "easy"
+    assert 0.0 < result["score"] < 1.0
+    assert result["summary"]["reached_target"] is True
+
+
+def test_heuristic_policy_completes_easy_task_without_llm():
+    result = inference.run_task(None, None, "easy", mode="heuristic")
+
+    assert result["task_id"] == "easy"
+    assert result["score"] >= 0.7
+    assert result["summary"]["reached_target"] is True
+
+
+def test_heuristic_selects_support_link_for_easy_start_page():
+    env = inference.NavisWebEnvironment(default_task_id="easy")
+    observation = env.reset(task_id="easy")
+
+    click_link_id = inference.choose_action_with_heuristic(observation)
+
+    assert click_link_id == "home_support"

@@ -1179,7 +1179,7 @@ wheels = [
 ]
 
 [[package]]
-name = "navis-web-env"
+name = "navis-web-ad"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [

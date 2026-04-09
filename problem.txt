@@ -12,11 +12,6 @@ How to fix
 Solution told by others:
 The hackathon rules heavily penalize "Boolean Graders" (graders that only ever return a flat 0.0 for a fail or a flat 1.0 for a perfect pass). They want these environments to be used for complex LLM training, which means the score needs to be granular (like 0.76 or 0.45) to show partial progress.
 
-When the validator ran your baseline inference.py script or checked their grader.py, it output a flat 1.0 or a flat 0.0.
-
-How your friend can fix this immediately:
-Tell your friend to go into their inference.py (and their environment's grader.py if they have one) and find wherever the score or final_score is calculated at the very end.
-
 They need to mathematically "clamp" the score so it can never be exactly 0.0 or 1.0.
 
 Tell them to add this single line of code right before the script prints the [END] line:

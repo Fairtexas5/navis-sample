@@ -209,4 +209,3 @@ This environment is deployed as a Docker-backed Hugging Face Space.
 5. Ensure the Space responds correctly for `/health`, `/reset`, `/step`, `/state`, `/metadata`, and `/schema`
 
 Because the environment is fully self-contained, deployment does not require access to live websites or external page content.
-# navis-sample

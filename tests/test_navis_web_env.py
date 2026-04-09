@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import math
 import os
 import sys
 
@@ -118,3 +119,55 @@ def test_normalize_score_clamps_exact_bounds_into_open_interval():
     assert normalize_score(1.0) == MAX_SCORE
     assert normalize_score(-4.0) == MIN_SCORE
     assert normalize_score(7.5) == MAX_SCORE
+
+
+def test_normalize_score_handles_non_finite_and_invalid_inputs():
+    assert normalize_score(math.nan) == MIN_SCORE
+    assert normalize_score(math.inf) == MIN_SCORE
+    assert normalize_score(-math.inf) == MIN_SCORE
+    assert normalize_score("not-a-number") == MIN_SCORE
+    assert normalize_score(None) == MIN_SCORE
+
+
+def test_grader_falls_back_to_min_score_for_malformed_success_summary():
+    malformed = {
+        "reached_target": True,
+        "actual_steps": "unknown",
+        "optimal_steps": object(),
+    }
+
+    assert grade_episode(malformed) == MIN_SCORE
+
+
+def test_problematic_case_1_perfect_run():
+    # If a run is mathematically perfect, it should still not return 1.0 (it must be clamped)
+    summary = {"reached_target": True, "actual_steps": 2, "optimal_steps": 2}
+    assert grade_episode(summary) == MAX_SCORE
+
+
+def test_problematic_case_2_empty_summary():
+    # If an LLM or pipeline crashes, summary is {}, which should output MIN_SCORE, not 0.0
+    assert grade_episode({}) == MIN_SCORE
+
+
+def test_problematic_case_3_zero_steps_division():
+    # If the environment somehow returns 0 steps, we must not crash with ZeroDivisionError
+    summary = {"reached_target": True, "actual_steps": 0, "optimal_steps": 0}
+    assert grade_episode(summary) == MAX_SCORE
+
+
+def test_problematic_case_4_type_parsing_errors():
+    # If the step count is malformed or corrupted into strings
+    summary = {"reached_target": True, "actual_steps": "", "optimal_steps": "two"}
+    assert grade_episode(summary) == MIN_SCORE
+
+
+def test_problematic_case_5_nan_and_infinity_in_grader():
+    # If math somehow produces NaN or Infinity
+    assert normalize_score(float("nan")) == MIN_SCORE
+    assert normalize_score(float("inf")) == MIN_SCORE
+
+
+def test_problematic_case_6_empty_aggregate_clamp():
+    # If there are no results, aggregate calculation evaluates normalize_score(0.0)
+    assert normalize_score(0.0) == MIN_SCORE

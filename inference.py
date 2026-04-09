@@ -55,9 +55,12 @@ def log_step(step: int, action: str, reward: float, done: bool, error: str | Non
     )
 
 
-def log_end(success: bool, steps: int, rewards: list[float]) -> None:
+def log_end(success: bool, steps: int, rewards: list[float], score: float) -> None:
     rewards_str = ",".join(f"{r:.2f}" for r in rewards)
-    print(f"[END] success={str(success).lower()} steps={steps} rewards={rewards_str}", flush=True)
+    print(
+        f"[END] success={str(success).lower()} steps={steps} score={score:.3f} rewards={rewards_str}",
+        flush=True,
+    )
 
 
 # ── Prompt / parsing helpers ───────────────────────────────────────────
@@ -221,7 +224,7 @@ def run_task(
         summary = {}
         score = normalize_score(grade_episode(summary))
     finally:
-        log_end(success=success, steps=steps_taken, rewards=rewards)
+        log_end(success=success, steps=steps_taken, rewards=rewards, score=score)
 
     return {
         "task_id": _task_id,

@@ -147,6 +147,22 @@ class NavisWebEnvironment(Environment):
         )
 
     def _episode_summary(self, reached_target: bool) -> Dict[str, Any]:
+        required_page_ids = list(self._task.required_page_ids or [])
+        visited_pages = list(self._state.visited_pages)
+        checkpoints_visited = [page_id for page_id in required_page_ids if page_id in visited_pages]
+
+        ordered_hits = 0
+        search_index = 0
+        for checkpoint in required_page_ids:
+            try:
+                found_index = visited_pages.index(checkpoint, search_index)
+            except ValueError:
+                break
+            ordered_hits += 1
+            search_index = found_index + 1
+
+        checkpoint_coverage = len(checkpoints_visited) / len(required_page_ids) if required_page_ids else 1.0
+        ordered_checkpoint_completion = ordered_hits / len(required_page_ids) if required_page_ids else 1.0
         return {
             "task_id": self._task.task_id,
             "reached_target": reached_target,
@@ -155,6 +171,19 @@ class NavisWebEnvironment(Environment):
             "invalid_actions": self._invalid_actions,
             "repeat_visits": self._repeat_visits,
             "termination_reason": self._state.termination_reason,
-            "path": list(self._state.visited_pages),
-            "visited_histogram": dict(Counter(self._state.visited_pages)),
+            "path": visited_pages,
+            "visited_histogram": dict(Counter(visited_pages)),
+            "workflow_domain": self._task.workflow_domain,
+            "difficulty": self._task.difficulty,
+            "required_page_ids": required_page_ids,
+            "checkpoints_visited": checkpoints_visited,
+            "checkpoint_coverage": checkpoint_coverage,
+            "ordered_checkpoint_completion": ordered_checkpoint_completion,
+            "start_distance_to_target": shortest_path_length(self._task, self._task.start_page_id),
+            "end_distance_to_target": self._state.shortest_distance_to_target,
+            "page_count": len(self._task.pages),
+            "branching_factor": (
+                sum(len(page.links) for page in self._task.pages.values()) / max(len(self._task.pages), 1)
+            ),
+            "distractor_taxonomy": list(self._task.distractor_taxonomy),
         }

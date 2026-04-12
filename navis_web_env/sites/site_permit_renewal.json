@@ -1,0 +1,103 @@
+{
+  "task_id": "permit_renewal",
+  "workflow_domain": "government_services",
+  "difficulty": "expert",
+  "goal_instruction": "You are on the Stonebridge City portal. Reach the Expedited Permit Renewal Supporting Documents Upload page.",
+  "start_page_id": "city_home",
+  "target_page_id": "expedited_permit_renewal_supporting_documents_upload",
+  "required_page_ids": ["permits_center", "renewal_requests", "expedited_renewal"],
+  "max_steps": 12,
+  "distractor_taxonomy": ["new application decoys", "inspection lookalikes", "business licensing loops"],
+  "pages": {
+    "city_home": {
+      "title": "Stonebridge City Services",
+      "text": "Stonebridge City supports permits, inspections, business services, and resident requests.",
+      "links": [
+        {"link_id": "home_permits", "label": "Permits and Licensing", "href_slug": "/permits", "role": "link", "aria_label": "Open permits and licensing", "preview_text": "Permit applications, renewals, inspections, and licensing support.", "destination_page_id": "permits_center"},
+        {"link_id": "home_business", "label": "Business Services", "href_slug": "/business", "role": "link", "aria_label": "Open business services", "preview_text": "Business registration, tax forms, and commerce resources.", "destination_page_id": "business_services"},
+        {"link_id": "home_help", "label": "Resident Help", "href_slug": "/help", "role": "link", "aria_label": "Open resident help", "preview_text": "General support and city-service guidance.", "destination_page_id": "resident_help"}
+      ]
+    },
+    "permits_center": {
+      "title": "Permits and Licensing",
+      "text": "Permits and Licensing includes new permit applications, permit renewals, inspections, and contractor records.",
+      "links": [
+        {"link_id": "permits_renewals", "label": "Renewal Requests", "href_slug": "/permits/renewals", "role": "link", "aria_label": "Open renewal requests", "preview_text": "Renew active permits, submit supporting documents, and review status.", "destination_page_id": "renewal_requests"},
+        {"link_id": "permits_new", "label": "New Permit Applications", "href_slug": "/permits/new", "role": "link", "aria_label": "Open new permit applications", "preview_text": "Start a new permit request.", "destination_page_id": "new_permit_applications"},
+        {"link_id": "permits_inspections", "label": "Inspection Scheduling", "href_slug": "/permits/inspections", "role": "link", "aria_label": "Open inspection scheduling", "preview_text": "Book or review permit inspections.", "destination_page_id": "inspection_scheduling"}
+      ]
+    },
+    "renewal_requests": {
+      "title": "Renewal Requests",
+      "text": "Renewal Requests covers standard permit renewals, expedited renewals, and documentation submission steps.",
+      "links": [
+        {"link_id": "renewal_expedited", "label": "Expedited Renewal", "href_slug": "/permits/renewals/expedited", "role": "link", "aria_label": "Open expedited renewal", "preview_text": "Fast-track renewal processing and supporting document requirements.", "destination_page_id": "expedited_renewal"},
+        {"link_id": "renewal_standard", "label": "Standard Renewal", "href_slug": "/permits/renewals/standard", "role": "link", "aria_label": "Open standard renewal", "preview_text": "Routine permit renewal steps.", "destination_page_id": "standard_renewal"},
+        {"link_id": "renewal_status", "label": "Renewal Status Lookup", "href_slug": "/permits/renewals/status", "role": "link", "aria_label": "Open renewal status lookup", "preview_text": "Check the status of a submitted permit renewal.", "destination_page_id": "renewal_status_lookup"}
+      ]
+    },
+    "expedited_renewal": {
+      "title": "Expedited Renewal",
+      "text": "Expedited Renewal includes urgent renewal rules, supporting document upload, and exception handling for expiring permits.",
+      "links": [
+        {"link_id": "expedited_upload", "label": "Supporting Documents Upload", "href_slug": "/permits/renewals/expedited/upload", "role": "link", "aria_label": "Open supporting documents upload", "preview_text": "Upload the supporting files required for an expedited permit renewal.", "destination_page_id": "expedited_permit_renewal_supporting_documents_upload"},
+        {"link_id": "expedited_checklist", "label": "Expedited Renewal Checklist", "href_slug": "/permits/renewals/expedited/checklist", "role": "link", "aria_label": "Open expedited renewal checklist", "preview_text": "Checklist for fees, supporting forms, and permit details.", "destination_page_id": "expedited_renewal_checklist"},
+        {"link_id": "expedited_requests", "label": "Renewal Requests", "href_slug": "/permits/renewals", "role": "link", "aria_label": "Return to renewal requests", "preview_text": "Back to renewal options.", "destination_page_id": "renewal_requests"}
+      ]
+    },
+    "new_permit_applications": {
+      "title": "New Permit Applications",
+      "text": "Start a new building, event, or contractor permit application.",
+      "links": [
+        {"link_id": "new_permit_center", "label": "Permits and Licensing", "href_slug": "/permits", "role": "link", "aria_label": "Return to permits and licensing", "preview_text": "Back to permit workflows.", "destination_page_id": "permits_center"}
+      ]
+    },
+    "inspection_scheduling": {
+      "title": "Inspection Scheduling",
+      "text": "Book inspections and review inspection requirements for active permits.",
+      "links": [
+        {"link_id": "inspection_center", "label": "Permits and Licensing", "href_slug": "/permits", "role": "link", "aria_label": "Return to permits and licensing", "preview_text": "Back to permit workflows.", "destination_page_id": "permits_center"}
+      ]
+    },
+    "standard_renewal": {
+      "title": "Standard Renewal",
+      "text": "Routine permit renewal workflow for permits that are not time-sensitive.",
+      "links": [
+        {"link_id": "standard_requests", "label": "Renewal Requests", "href_slug": "/permits/renewals", "role": "link", "aria_label": "Return to renewal requests", "preview_text": "Back to renewal request options.", "destination_page_id": "renewal_requests"}
+      ]
+    },
+    "renewal_status_lookup": {
+      "title": "Renewal Status Lookup",
+      "text": "Look up the current processing state of a submitted permit renewal.",
+      "links": [
+        {"link_id": "status_requests", "label": "Renewal Requests", "href_slug": "/permits/renewals", "role": "link", "aria_label": "Return to renewal requests", "preview_text": "Back to permit renewal options.", "destination_page_id": "renewal_requests"}
+      ]
+    },
+    "business_services": {
+      "title": "Business Services",
+      "text": "Business services covers registration, tax forms, and licensing help.",
+      "links": [
+        {"link_id": "business_home", "label": "City Services Home", "href_slug": "/", "role": "link", "aria_label": "Return to city services home", "preview_text": "Back to Stonebridge City Services.", "destination_page_id": "city_home"}
+      ]
+    },
+    "resident_help": {
+      "title": "Resident Help",
+      "text": "General city help, service routing, and contact guidance.",
+      "links": [
+        {"link_id": "help_city_home", "label": "City Services Home", "href_slug": "/", "role": "link", "aria_label": "Return to city services home", "preview_text": "Back to the city services landing page.", "destination_page_id": "city_home"}
+      ]
+    },
+    "expedited_renewal_checklist": {
+      "title": "Expedited Renewal Checklist",
+      "text": "Checklist for permit number, expiring date, and supporting document requirements.",
+      "links": [
+        {"link_id": "checklist_expedited", "label": "Expedited Renewal", "href_slug": "/permits/renewals/expedited", "role": "link", "aria_label": "Return to expedited renewal", "preview_text": "Back to expedited renewal steps.", "destination_page_id": "expedited_renewal"}
+      ]
+    },
+    "expedited_permit_renewal_supporting_documents_upload": {
+      "title": "Expedited Permit Renewal Supporting Documents Upload",
+      "text": "This page contains the upload flow for supporting documents required in an expedited permit renewal.",
+      "links": []
+    }
+  }
+}

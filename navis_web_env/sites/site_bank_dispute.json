@@ -1,0 +1,104 @@
+{
+  "task_id": "bank_dispute",
+  "workflow_domain": "banking",
+  "difficulty": "expert",
+  "goal_instruction": "You are on the Pine Street Bank website. Reach the Card Dispute Evidence Upload Form page.",
+  "start_page_id": "bank_home",
+  "target_page_id": "card_dispute_evidence_upload_form",
+  "required_page_ids": ["help_center", "card_disputes", "dispute_documentation"],
+  "max_steps": 11,
+  "distractor_taxonomy": ["fraud hotline lookalikes", "chargeback policy detours", "general support loops"],
+  "pages": {
+    "bank_home": {
+      "title": "Pine Street Bank",
+      "text": "Pine Street Bank helps customers manage cards, disputes, security alerts, and account services.",
+      "links": [
+        {"link_id": "home_help", "label": "Help Center", "href_slug": "/help", "role": "link", "aria_label": "Open help center", "preview_text": "Support topics, card issues, and dispute workflows.", "destination_page_id": "help_center"},
+        {"link_id": "home_security", "label": "Security Center", "href_slug": "/security", "role": "link", "aria_label": "Open security center", "preview_text": "Fraud alerts, suspicious activity, and account protection.", "destination_page_id": "security_center"},
+        {"link_id": "home_cards", "label": "Cards", "href_slug": "/cards", "role": "link", "aria_label": "Open cards", "preview_text": "Activate a card, replace a card, and manage card controls.", "destination_page_id": "cards"}
+      ]
+    },
+    "help_center": {
+      "title": "Help Center",
+      "text": "Find support for transactions, card disputes, fraud claims, account access, and service requests.",
+      "links": [
+        {"link_id": "help_disputes", "label": "Card Disputes", "href_slug": "/help/disputes", "role": "link", "aria_label": "Open card disputes", "preview_text": "Dispute charges, upload evidence, and check case requirements.", "destination_page_id": "card_disputes"},
+        {"link_id": "help_security", "label": "Fraud and Security", "href_slug": "/help/security", "role": "link", "aria_label": "Open fraud and security", "preview_text": "Report fraud or freeze a card immediately.", "destination_page_id": "security_center"},
+        {"link_id": "help_contact", "label": "Contact Support", "href_slug": "/help/contact", "role": "link", "aria_label": "Open contact support", "preview_text": "General support channels for unresolved account issues.", "destination_page_id": "contact_support"}
+      ]
+    },
+    "card_disputes": {
+      "title": "Card Disputes",
+      "text": "Card Disputes covers transaction disputes, merchant issues, dispute evidence, and filing deadlines.",
+      "links": [
+        {"link_id": "disputes_documentation", "label": "Documentation and Evidence", "href_slug": "/help/disputes/docs", "role": "link", "aria_label": "Open dispute documentation and evidence", "preview_text": "Review required documents and evidence upload paths.", "destination_page_id": "dispute_documentation"},
+        {"link_id": "disputes_policy", "label": "Dispute Policies", "href_slug": "/help/disputes/policies", "role": "link", "aria_label": "Open dispute policies", "preview_text": "Chargeback policies, timelines, and provisional credit notes.", "destination_page_id": "dispute_policies"},
+        {"link_id": "disputes_contact", "label": "Dispute Hotline", "href_slug": "/help/disputes/hotline", "role": "link", "aria_label": "Open dispute hotline", "preview_text": "Call for urgent fraud or blocked-card emergencies.", "destination_page_id": "dispute_hotline"}
+      ]
+    },
+    "dispute_documentation": {
+      "title": "Documentation and Evidence",
+      "text": "Documentation and Evidence includes merchant correspondence, receipt requirements, and evidence upload steps.",
+      "links": [
+        {"link_id": "docs_upload_form", "label": "Card Dispute Evidence Upload Form", "href_slug": "/help/disputes/docs/upload", "role": "link", "aria_label": "Open card dispute evidence upload form", "preview_text": "Upload receipts, merchant communication, and transaction support files.", "destination_page_id": "card_dispute_evidence_upload_form"},
+        {"link_id": "docs_checklist", "label": "Evidence Checklist", "href_slug": "/help/disputes/docs/checklist", "role": "link", "aria_label": "Open evidence checklist", "preview_text": "Confirm which documents strengthen a dispute case.", "destination_page_id": "evidence_checklist"},
+        {"link_id": "docs_disputes", "label": "Card Disputes", "href_slug": "/help/disputes", "role": "link", "aria_label": "Return to card disputes", "preview_text": "Back to dispute case support.", "destination_page_id": "card_disputes"}
+      ]
+    },
+    "security_center": {
+      "title": "Security Center",
+      "text": "Security Center helps report fraud, freeze cards, and review suspicious transaction alerts.",
+      "links": [
+        {"link_id": "security_hotline", "label": "Fraud Hotline", "href_slug": "/security/hotline", "role": "link", "aria_label": "Open fraud hotline", "preview_text": "Immediate help for active fraud and account takeovers.", "destination_page_id": "fraud_hotline"},
+        {"link_id": "security_help", "label": "Help Center", "href_slug": "/help", "role": "link", "aria_label": "Return to help center", "preview_text": "Back to support topics and service workflows.", "destination_page_id": "help_center"}
+      ]
+    },
+    "cards": {
+      "title": "Cards",
+      "text": "Manage card controls, replacements, travel notices, and transaction alerts.",
+      "links": [
+        {"link_id": "cards_help", "label": "Help Center", "href_slug": "/help", "role": "link", "aria_label": "Open help center", "preview_text": "Support for card issues, disputes, and account services.", "destination_page_id": "help_center"}
+      ]
+    },
+    "dispute_policies": {
+      "title": "Dispute Policies",
+      "text": "Policies for merchant disputes, unauthorized charges, timelines, and provisional credits.",
+      "links": [
+        {"link_id": "policy_disputes", "label": "Card Disputes", "href_slug": "/help/disputes", "role": "link", "aria_label": "Return to card disputes", "preview_text": "Back to dispute workflow options.", "destination_page_id": "card_disputes"}
+      ]
+    },
+    "dispute_hotline": {
+      "title": "Dispute Hotline",
+      "text": "Call support for urgent dispute intake or fraud cases requiring immediate review.",
+      "links": [
+        {"link_id": "hotline_disputes", "label": "Card Disputes", "href_slug": "/help/disputes", "role": "link", "aria_label": "Return to card disputes", "preview_text": "Back to online dispute options.", "destination_page_id": "card_disputes"}
+      ]
+    },
+    "fraud_hotline": {
+      "title": "Fraud Hotline",
+      "text": "Emergency phone support for current fraud, account takeover, or stolen card situations.",
+      "links": [
+        {"link_id": "fraud_security", "label": "Security Center", "href_slug": "/security", "role": "link", "aria_label": "Return to security center", "preview_text": "Back to account protection resources.", "destination_page_id": "security_center"}
+      ]
+    },
+    "contact_support": {
+      "title": "Contact Support",
+      "text": "General contact options for account support and unresolved issues.",
+      "links": [
+        {"link_id": "contact_help", "label": "Help Center", "href_slug": "/help", "role": "link", "aria_label": "Return to help center", "preview_text": "Back to Pine Street Bank help topics.", "destination_page_id": "help_center"}
+      ]
+    },
+    "evidence_checklist": {
+      "title": "Evidence Checklist",
+      "text": "Checklist of documents and supporting evidence useful for a charge dispute review.",
+      "links": [
+        {"link_id": "checklist_docs", "label": "Documentation and Evidence", "href_slug": "/help/disputes/docs", "role": "link", "aria_label": "Return to documentation and evidence", "preview_text": "Back to upload paths and dispute documentation.", "destination_page_id": "dispute_documentation"}
+      ]
+    },
+    "card_dispute_evidence_upload_form": {
+      "title": "Card Dispute Evidence Upload Form",
+      "text": "This page contains the official form for uploading card dispute evidence and merchant communications.",
+      "links": []
+    }
+  }
+}

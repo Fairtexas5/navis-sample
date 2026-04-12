@@ -1,8 +1,11 @@
 ﻿{
   "task_id": "medium",
+  "workflow_domain": "student_services",
+  "difficulty": "medium",
   "goal_instruction": "You are on the Northstar University site. Reach the Tuition Appeals Form page.",
   "start_page_id": "landing",
   "target_page_id": "tuition_appeals_form",
+  "required_page_ids": ["student_services", "forms_library", "tuition_billing_forms"],
   "max_steps": 8,
   "distractor_taxonomy": ["financial aid detours", "student life lookalikes", "registrar cross-links"],
   "pages": {

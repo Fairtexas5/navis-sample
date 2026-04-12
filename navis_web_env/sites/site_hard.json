@@ -1,8 +1,11 @@
 ﻿{
   "task_id": "hard",
+  "workflow_domain": "enterprise_it",
+  "difficulty": "hard",
   "goal_instruction": "You are on the Orion Enterprise Help portal. Reach the Emergency Access Reset Playbook page.",
   "start_page_id": "dashboard",
   "target_page_id": "emergency_access_reset_playbook",
+  "required_page_ids": ["admin_console", "secure_remote_signin", "reset_guides"],
   "max_steps": 11,
   "distractor_taxonomy": ["near-target decoys", "looping support hubs", "repeated access terminology"],
   "pages": {

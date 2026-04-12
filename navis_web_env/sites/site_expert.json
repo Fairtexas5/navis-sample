@@ -1,8 +1,11 @@
 {
   "task_id": "expert",
+  "workflow_domain": "healthcare_authorizations",
+  "difficulty": "expert",
   "goal_instruction": "You are on the HarborCare Provider Portal. Reach the Prior Authorization Escalation Worksheet page.",
   "start_page_id": "provider_home",
   "target_page_id": "prior_auth_escalation_worksheet",
+  "required_page_ids": ["authorizations", "prior_authorization_center", "exception_escalation_requests", "clinical_escalation_forms"],
   "max_steps": 12,
   "distractor_taxonomy": ["claims vs authorization ambiguity", "appeals lookalikes", "payer-policy detours", "near-target escalation decoys"],
   "pages": {

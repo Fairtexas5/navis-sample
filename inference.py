@@ -19,13 +19,11 @@ from navis_web_env.site_loader import list_task_ids, load_task, shortest_path_le
 
 load_dotenv()
 
-# ── Environment variables (hackathon spec) ──────────────────────────────
 API_BASE_URL = os.getenv("API_BASE_URL", "https://api.openai.com/v1")
 MODEL_NAME = os.getenv("MODEL_NAME", "gpt-4.1-mini")
 HF_TOKEN = os.getenv("HF_TOKEN")
 client: OpenAI | None = OpenAI(base_url=API_BASE_URL, api_key=HF_TOKEN) if HF_TOKEN else None
 
-# ── Constants ───────────────────────────────────────────────────────────
 OUTPUT_DIR = Path("outputs/evals")
 OUTPUT_PATH = OUTPUT_DIR / "baseline.json"
 STOPWORDS = {
@@ -54,7 +52,6 @@ class HeuristicMemory:
         self.clicked_link_ids.append(click_link_id)
 
 
-# ── Structured logging (hackathon output format) ───────────────────────
 
 def log_start(task: str, env: str, model: str) -> None:
     print(f"[START] task={task} env={env} model={model}", flush=True)
@@ -78,7 +75,6 @@ def log_end(success: bool, steps: int, rewards: list[float], score: float) -> No
     )
 
 
-# ── Prompt / parsing helpers ───────────────────────────────────────────
 
 def prompt_from_observation(observation: Any) -> str:
     link_lines = []
@@ -114,7 +110,6 @@ def _tokenize(text: str) -> set[str]:
     return {token for token in re.findall(r"[a-z0-9]+", text.lower()) if token not in STOPWORDS and len(token) > 1}
 
 
-# ── Action selection ───────────────────────────────────────────────────
 
 def choose_action_with_llm(observation: Any, llm_client: Any = None, model_name: str | None = None) -> str:
     prompt = prompt_from_observation(observation)
@@ -221,7 +216,6 @@ def choose_action(
     raise ValueError(f"Unsupported BASELINE_AGENT '{mode}'. Expected 'heuristic', 'oracle', or 'agent'.")
 
 
-# ── Task runner ────────────────────────────────────────────────────────
 
 def run_task(
     llm_client_or_task_id: Any,
@@ -332,7 +326,6 @@ def run_task(
     }
 
 
-# ── Main ───────────────────────────────────────────────────────────────
 
 def run_benchmark(
     mode: str,

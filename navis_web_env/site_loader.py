@@ -37,6 +37,9 @@ class TaskDefinition:
     max_steps: int
     pages: Dict[str, PageDefinition]
     distractor_taxonomy: List[str]
+    workflow_domain: str | None = None
+    difficulty: str | None = None
+    required_page_ids: List[str] | None = None
 
     @property
     def target_page(self) -> PageDefinition:
@@ -50,6 +53,9 @@ TASK_FILE_MAP = {
     "hard": SITES_DIR / "site_hard.json",
     "expert": SITES_DIR / "site_expert.json",
     "adversarial": SITES_DIR / "site_adversarial.json",
+    "bank_dispute": SITES_DIR / "site_bank_dispute.json",
+    "it_access_recovery": SITES_DIR / "site_it_access_recovery.json",
+    "permit_renewal": SITES_DIR / "site_permit_renewal.json",
 }
 
 
@@ -57,9 +63,23 @@ def list_task_ids() -> list[str]:
     return list(TASK_FILE_MAP.keys())
 
 
+def list_curriculum_task_ids() -> list[str]:
+    from .curriculum import CURRICULUM_TASK_IDS
+
+    return list(CURRICULUM_TASK_IDS)
+
+
+def list_all_task_ids() -> list[str]:
+    return list_task_ids() + list_curriculum_task_ids()
+
+
 def load_task(task_id: str) -> TaskDefinition:
+    from .curriculum import CURRICULUM_TASK_IDS, generate_curriculum_task
+
+    if task_id in CURRICULUM_TASK_IDS:
+        return generate_curriculum_task(task_id)
     if task_id not in TASK_FILE_MAP:
-        raise ValueError(f"Unknown task_id '{task_id}'. Expected one of: {', '.join(list_task_ids())}")
+        raise ValueError(f"Unknown task_id '{task_id}'. Expected one of: {', '.join(list_all_task_ids())}")
     payload = json.loads(TASK_FILE_MAP[task_id].read_text(encoding="utf-8-sig"))
     pages = {
         page_id: PageDefinition(
@@ -89,6 +109,9 @@ def load_task(task_id: str) -> TaskDefinition:
         max_steps=payload["max_steps"],
         pages=pages,
         distractor_taxonomy=payload.get("distractor_taxonomy", []),
+        workflow_domain=payload.get("workflow_domain"),
+        difficulty=payload.get("difficulty"),
+        required_page_ids=payload.get("required_page_ids", []),
     )
 
 

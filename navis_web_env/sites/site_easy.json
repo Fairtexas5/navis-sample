@@ -1,8 +1,11 @@
 ﻿{
   "task_id": "easy",
+  "workflow_domain": "documentation_support",
+  "difficulty": "easy",
   "goal_instruction": "You are on the Acorn Docs website. Reach the Contact Support page.",
   "start_page_id": "home",
   "target_page_id": "contact_support",
+  "required_page_ids": ["support_center"],
   "max_steps": 5,
   "distractor_taxonomy": ["marketing navigation", "pricing detour"],
   "pages": {

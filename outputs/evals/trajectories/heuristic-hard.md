@@ -1,6 +1,6 @@
 # Trajectory: heuristic / hard
 
-- Score: `0.010`
+- Score: `0.050`
 - Path: `dashboard -> employee_services -> remote_work -> vpn_access -> remote_work -> vpn_access -> remote_work -> vpn_access -> remote_work`
 
 ```mermaid

@@ -1,6 +1,6 @@
 # Trajectory: oracle / hard
 
-- Score: `0.990`
+- Score: `0.980`
 - Path: `dashboard -> admin_console -> secure_access -> remote_signin -> reset_guides -> emergency_access_reset_playbook`
 
 ```mermaid

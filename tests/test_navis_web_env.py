@@ -114,6 +114,61 @@ def test_grader_returns_valid_range_and_prefers_efficient_success():
     assert failure_score == MIN_SCORE
 
 
+def test_grader_awards_partial_credit_for_workflow_progress_with_task_metadata():
+    summary = {
+        "task_id": "bank_dispute",
+        "reached_target": False,
+        "actual_steps": 3,
+        "optimal_steps": 4,
+        "invalid_actions": 0,
+        "repeat_visits": 0,
+        "checkpoint_coverage": 2 / 3,
+        "ordered_checkpoint_completion": 2 / 3,
+        "start_distance_to_target": 4,
+        "end_distance_to_target": 1,
+        "termination_reason": "max_steps_exceeded",
+    }
+
+    score = grade_episode(summary)
+
+    assert MIN_SCORE < score < 0.7
+
+
+def test_grader_penalizes_invalid_actions_and_revisits():
+    cleaner = grade_episode(
+        {
+            "task_id": "permit_renewal",
+            "reached_target": True,
+            "actual_steps": 5,
+            "optimal_steps": 4,
+            "invalid_actions": 0,
+            "repeat_visits": 0,
+            "checkpoint_coverage": 1.0,
+            "ordered_checkpoint_completion": 1.0,
+            "start_distance_to_target": 4,
+            "end_distance_to_target": 0,
+            "termination_reason": "target_reached",
+        }
+    )
+    noisy = grade_episode(
+        {
+            "task_id": "permit_renewal",
+            "reached_target": True,
+            "actual_steps": 7,
+            "optimal_steps": 4,
+            "invalid_actions": 2,
+            "repeat_visits": 3,
+            "checkpoint_coverage": 1.0,
+            "ordered_checkpoint_completion": 1.0,
+            "start_distance_to_target": 4,
+            "end_distance_to_target": 0,
+            "termination_reason": "target_reached",
+        }
+    )
+
+    assert cleaner > noisy
+
+
 def test_normalize_score_clamps_exact_bounds_into_open_interval():
     assert normalize_score(0.0) == MIN_SCORE
     assert normalize_score(1.0) == MAX_SCORE

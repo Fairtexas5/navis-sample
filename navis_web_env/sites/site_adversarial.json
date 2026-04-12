@@ -1,8 +1,11 @@
 {
   "task_id": "adversarial",
+  "workflow_domain": "municipal_utilities",
+  "difficulty": "adversarial",
   "goal_instruction": "You are on the Rivermark City Services portal. Reach the After-Hours Utility Shutoff Reversal Form page.",
   "start_page_id": "city_home",
   "target_page_id": "after_hours_shutoff_reversal_form",
+  "required_page_ids": ["utilities", "service_interruptions", "restoration_reconnection", "emergency_restoration", "after_hours_reversal_requests"],
   "max_steps": 13,
   "distractor_taxonomy": ["emergency outage decoys", "utility billing lookalikes", "resident-service loops", "near-target restoration pages"],
   "pages": {

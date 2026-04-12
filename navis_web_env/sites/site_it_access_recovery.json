@@ -1,0 +1,103 @@
+{
+  "task_id": "it_access_recovery",
+  "workflow_domain": "enterprise_it",
+  "difficulty": "expert",
+  "goal_instruction": "You are on the LatticeWorks employee IT portal. Reach the Privileged Access Recovery Exception Form page.",
+  "start_page_id": "it_home",
+  "target_page_id": "privileged_access_recovery_exception_form",
+  "required_page_ids": ["identity_access", "access_recovery", "elevated_access_exceptions"],
+  "max_steps": 12,
+  "distractor_taxonomy": ["password reset decoys", "vpn lookalikes", "service-desk loops"],
+  "pages": {
+    "it_home": {
+      "title": "LatticeWorks IT Portal",
+      "text": "The IT portal supports identity access, device support, service desk requests, and urgent recovery workflows.",
+      "links": [
+        {"link_id": "it_identity", "label": "Identity and Access", "href_slug": "/identity", "role": "link", "aria_label": "Open identity and access", "preview_text": "Account access, elevated permissions, and recovery workflows.", "destination_page_id": "identity_access"},
+        {"link_id": "it_service_desk", "label": "Service Desk", "href_slug": "/service-desk", "role": "link", "aria_label": "Open service desk", "preview_text": "General IT issues, ticket routing, and hardware requests.", "destination_page_id": "service_desk"},
+        {"link_id": "it_remote", "label": "Remote Work Tools", "href_slug": "/remote", "role": "link", "aria_label": "Open remote work tools", "preview_text": "VPN, conferencing, and remote sign-in support.", "destination_page_id": "remote_work_tools"}
+      ]
+    },
+    "identity_access": {
+      "title": "Identity and Access",
+      "text": "Identity and Access covers account resets, privileged access, security reviews, and recovery exceptions.",
+      "links": [
+        {"link_id": "identity_recovery", "label": "Access Recovery", "href_slug": "/identity/recovery", "role": "link", "aria_label": "Open access recovery", "preview_text": "Recover locked or broken access, including elevated-access cases.", "destination_page_id": "access_recovery"},
+        {"link_id": "identity_admin", "label": "Privileged Access", "href_slug": "/identity/privileged", "role": "link", "aria_label": "Open privileged access", "preview_text": "Request or review privileged roles and time-bound elevation.", "destination_page_id": "privileged_access"},
+        {"link_id": "identity_password", "label": "Password Reset", "href_slug": "/identity/password-reset", "role": "link", "aria_label": "Open password reset", "preview_text": "Reset or unlock a standard employee password.", "destination_page_id": "password_reset"}
+      ]
+    },
+    "access_recovery": {
+      "title": "Access Recovery",
+      "text": "Access Recovery includes account unlocks, device-based recovery, administrative reactivation, and exception paths.",
+      "links": [
+        {"link_id": "recovery_exceptions", "label": "Elevated Access Exceptions", "href_slug": "/identity/recovery/exceptions", "role": "link", "aria_label": "Open elevated access exceptions", "preview_text": "Exception handling for privileged access recovery and admin break-glass workflows.", "destination_page_id": "elevated_access_exceptions"},
+        {"link_id": "recovery_unlock", "label": "Standard Account Unlock", "href_slug": "/identity/recovery/unlock", "role": "link", "aria_label": "Open standard account unlock", "preview_text": "Routine account unlocks for standard users.", "destination_page_id": "standard_account_unlock"},
+        {"link_id": "recovery_service", "label": "Service Desk Escalation", "href_slug": "/service-desk/escalate", "role": "link", "aria_label": "Open service desk escalation", "preview_text": "Escalate a ticket for manual handling.", "destination_page_id": "service_desk_escalation"}
+      ]
+    },
+    "elevated_access_exceptions": {
+      "title": "Elevated Access Exceptions",
+      "text": "Use Elevated Access Exceptions for privileged admin recovery, emergency exceptions, and break-glass approvals.",
+      "links": [
+        {"link_id": "exceptions_form", "label": "Privileged Access Recovery Exception Form", "href_slug": "/identity/recovery/exceptions/form", "role": "link", "aria_label": "Open privileged access recovery exception form", "preview_text": "Form required for privileged account recovery and temporary exception approval.", "destination_page_id": "privileged_access_recovery_exception_form"},
+        {"link_id": "exceptions_approval", "label": "Approval Checklist", "href_slug": "/identity/recovery/exceptions/checklist", "role": "link", "aria_label": "Open approval checklist", "preview_text": "Checklist for sponsor approval and security verification.", "destination_page_id": "approval_checklist"},
+        {"link_id": "exceptions_recovery", "label": "Access Recovery", "href_slug": "/identity/recovery", "role": "link", "aria_label": "Return to access recovery", "preview_text": "Back to the recovery options hub.", "destination_page_id": "access_recovery"}
+      ]
+    },
+    "privileged_access": {
+      "title": "Privileged Access",
+      "text": "Privileged Access includes role requests, just-in-time elevation, and admin account reviews.",
+      "links": [
+        {"link_id": "privileged_identity", "label": "Identity and Access", "href_slug": "/identity", "role": "link", "aria_label": "Return to identity and access", "preview_text": "Back to account access workflows.", "destination_page_id": "identity_access"}
+      ]
+    },
+    "password_reset": {
+      "title": "Password Reset",
+      "text": "Reset a forgotten password or unlock a standard employee account.",
+      "links": [
+        {"link_id": "password_identity", "label": "Identity and Access", "href_slug": "/identity", "role": "link", "aria_label": "Return to identity and access", "preview_text": "Back to identity tools.", "destination_page_id": "identity_access"}
+      ]
+    },
+    "standard_account_unlock": {
+      "title": "Standard Account Unlock",
+      "text": "Routine account unlock for standard users without privileged access.",
+      "links": [
+        {"link_id": "unlock_recovery", "label": "Access Recovery", "href_slug": "/identity/recovery", "role": "link", "aria_label": "Return to access recovery", "preview_text": "Back to access recovery options.", "destination_page_id": "access_recovery"}
+      ]
+    },
+    "service_desk": {
+      "title": "Service Desk",
+      "text": "The Service Desk routes general IT issues, tickets, device requests, and software problems.",
+      "links": [
+        {"link_id": "desk_identity", "label": "Identity and Access", "href_slug": "/identity", "role": "link", "aria_label": "Open identity and access", "preview_text": "Account access, resets, and security workflows.", "destination_page_id": "identity_access"}
+      ]
+    },
+    "service_desk_escalation": {
+      "title": "Service Desk Escalation",
+      "text": "Manual escalation queue for tickets that cannot be resolved automatically.",
+      "links": [
+        {"link_id": "desk_escalation_recovery", "label": "Access Recovery", "href_slug": "/identity/recovery", "role": "link", "aria_label": "Return to access recovery", "preview_text": "Back to recovery workflows.", "destination_page_id": "access_recovery"}
+      ]
+    },
+    "remote_work_tools": {
+      "title": "Remote Work Tools",
+      "text": "Remote work support for VPN, virtual desktop, and conferencing access.",
+      "links": [
+        {"link_id": "remote_it_home", "label": "IT Portal Home", "href_slug": "/", "role": "link", "aria_label": "Return to IT portal home", "preview_text": "Back to the main IT portal.", "destination_page_id": "it_home"}
+      ]
+    },
+    "approval_checklist": {
+      "title": "Approval Checklist",
+      "text": "Checklist for security sponsor approval, manager sign-off, and emergency justification.",
+      "links": [
+        {"link_id": "checklist_exceptions", "label": "Elevated Access Exceptions", "href_slug": "/identity/recovery/exceptions", "role": "link", "aria_label": "Return to elevated access exceptions", "preview_text": "Back to privileged recovery exceptions.", "destination_page_id": "elevated_access_exceptions"}
+      ]
+    },
+    "privileged_access_recovery_exception_form": {
+      "title": "Privileged Access Recovery Exception Form",
+      "text": "This page contains the official exception form for privileged access recovery.",
+      "links": []
+    }
+  }
+}

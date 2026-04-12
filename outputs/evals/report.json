@@ -26,6 +26,24 @@
               "support_center": 1,
               "contact_support": 1
             },
+            "workflow_domain": "documentation_support",
+            "difficulty": "easy",
+            "required_page_ids": [
+              "support_center"
+            ],
+            "checkpoints_visited": [
+              "support_center"
+            ],
+            "checkpoint_coverage": 1.0,
+            "ordered_checkpoint_completion": 1.0,
+            "start_distance_to_target": 2,
+            "end_distance_to_target": 0,
+            "page_count": 6,
+            "branching_factor": 1.6666666666666667,
+            "distractor_taxonomy": [
+              "marketing navigation",
+              "pricing detour"
+            ],
             "grade": 0.99
           },
           "trajectory": [
@@ -64,7 +82,7 @@
         },
         {
           "task_id": "medium",
-          "score": 0.01,
+          "score": 0.24,
           "summary": {
             "task_id": "medium",
             "reached_target": false,
@@ -91,7 +109,29 @@
               "financial_aid_forms": 3,
               "paying_for_college": 3
             },
-            "grade": 0.01
+            "workflow_domain": "student_services",
+            "difficulty": "medium",
+            "required_page_ids": [
+              "student_services",
+              "forms_library",
+              "tuition_billing_forms"
+            ],
+            "checkpoints_visited": [
+              "student_services",
+              "forms_library"
+            ],
+            "checkpoint_coverage": 0.6666666666666666,
+            "ordered_checkpoint_completion": 0.6666666666666666,
+            "start_distance_to_target": 4,
+            "end_distance_to_target": 999,
+            "page_count": 11,
+            "branching_factor": 1.7272727272727273,
+            "distractor_taxonomy": [
+              "financial aid detours",
+              "student life lookalikes",
+              "registrar cross-links"
+            ],
+            "grade": 0.24
           },
           "trajectory": [
             {
@@ -189,7 +229,7 @@
         },
         {
           "task_id": "hard",
-          "score": 0.01,
+          "score": 0.05,
           "summary": {
             "task_id": "hard",
             "reached_target": false,
@@ -215,7 +255,26 @@
               "remote_work": 4,
               "vpn_access": 3
             },
-            "grade": 0.01
+            "workflow_domain": "enterprise_it",
+            "difficulty": "hard",
+            "required_page_ids": [
+              "admin_console",
+              "secure_remote_signin",
+              "reset_guides"
+            ],
+            "checkpoints_visited": [],
+            "checkpoint_coverage": 0.0,
+            "ordered_checkpoint_completion": 0.0,
+            "start_distance_to_target": 5,
+            "end_distance_to_target": 6,
+            "page_count": 14,
+            "branching_factor": 1.9285714285714286,
+            "distractor_taxonomy": [
+              "near-target decoys",
+              "looping support hubs",
+              "repeated access terminology"
+            ],
+            "grade": 0.05
           },
           "trajectory": [
             {
@@ -340,6 +399,32 @@
               "prior_auth_escalation": 1,
               "prior_auth_escalation_worksheet": 1
             },
+            "workflow_domain": "healthcare_authorizations",
+            "difficulty": "expert",
+            "required_page_ids": [
+              "authorizations",
+              "prior_authorization_center",
+              "exception_escalation_requests",
+              "clinical_escalation_forms"
+            ],
+            "checkpoints_visited": [
+              "authorizations",
+              "prior_authorization_center",
+              "exception_escalation_requests",
+              "clinical_escalation_forms"
+            ],
+            "checkpoint_coverage": 1.0,
+            "ordered_checkpoint_completion": 1.0,
+            "start_distance_to_target": 6,
+            "end_distance_to_target": 0,
+            "page_count": 16,
+            "branching_factor": 1.75,
+            "distractor_taxonomy": [
+              "claims vs authorization ambiguity",
+              "appeals lookalikes",
+              "payer-policy detours",
+              "near-target escalation decoys"
+            ],
             "grade": 0.99
           },
           "trajectory": [
@@ -418,7 +503,7 @@
         },
         {
           "task_id": "adversarial",
-          "score": 0.99,
+          "score": 0.916,
           "summary": {
             "task_id": "adversarial",
             "reached_target": true,
@@ -445,7 +530,32 @@
               "after_hours_reversal_requests": 1,
               "after_hours_shutoff_reversal_form": 1
             },
-            "grade": 0.99
+            "workflow_domain": "municipal_utilities",
+            "difficulty": "adversarial",
+            "required_page_ids": [
+              "utilities",
+              "service_interruptions",
+              "restoration_reconnection",
+              "emergency_restoration",
+              "after_hours_reversal_requests"
+            ],
+            "checkpoints_visited": [
+              "utilities",
+              "after_hours_reversal_requests"
+            ],
+            "checkpoint_coverage": 0.4,
+            "ordered_checkpoint_completion": 0.2,
+            "start_distance_to_target": 6,
+            "end_distance_to_target": 0,
+            "page_count": 20,
+            "branching_factor": 1.8,
+            "distractor_taxonomy": [
+              "emergency outage decoys",
+              "utility billing lookalikes",
+              "resident-service loops",
+              "near-target restoration pages"
+            ],
+            "grade": 0.916
           },
           "trajectory": [
             {
@@ -520,10 +630,322 @@
               "remaining_steps": 7
             }
           ]
+        },
+        {
+          "task_id": "bank_dispute",
+          "score": 0.99,
+          "summary": {
+            "task_id": "bank_dispute",
+            "reached_target": true,
+            "actual_steps": 4,
+            "optimal_steps": 4,
+            "invalid_actions": 0,
+            "repeat_visits": 0,
+            "termination_reason": "target_reached",
+            "path": [
+              "bank_home",
+              "help_center",
+              "card_disputes",
+              "dispute_documentation",
+              "card_dispute_evidence_upload_form"
+            ],
+            "visited_histogram": {
+              "bank_home": 1,
+              "help_center": 1,
+              "card_disputes": 1,
+              "dispute_documentation": 1,
+              "card_dispute_evidence_upload_form": 1
+            },
+            "workflow_domain": "banking",
+            "difficulty": "expert",
+            "required_page_ids": [
+              "help_center",
+              "card_disputes",
+              "dispute_documentation"
+            ],
+            "checkpoints_visited": [
+              "help_center",
+              "card_disputes",
+              "dispute_documentation"
+            ],
+            "checkpoint_coverage": 1.0,
+            "ordered_checkpoint_completion": 1.0,
+            "start_distance_to_target": 4,
+            "end_distance_to_target": 0,
+            "page_count": 12,
+            "branching_factor": 1.6666666666666667,
+            "distractor_taxonomy": [
+              "fraud hotline lookalikes",
+              "chargeback policy detours",
+              "general support loops"
+            ],
+            "grade": 0.99
+          },
+          "trajectory": [
+            {
+              "step": 0,
+              "page_id": "bank_home",
+              "page_title": "Pine Street Bank",
+              "available_link_ids": [
+                "home_help",
+                "home_security",
+                "home_cards"
+              ],
+              "remaining_steps": 11
+            },
+            {
+              "step": 1,
+              "from_page_id": "bank_home",
+              "page_id": "help_center",
+              "page_title": "Help Center",
+              "chosen_link_id": "home_help",
+              "reward": 0.09999999999999999,
+              "done": false,
+              "remaining_steps": 10
+            },
+            {
+              "step": 2,
+              "from_page_id": "help_center",
+              "page_id": "card_disputes",
+              "page_title": "Card Disputes",
+              "chosen_link_id": "help_disputes",
+              "reward": 0.09999999999999999,
+              "done": false,
+              "remaining_steps": 9
+            },
+            {
+              "step": 3,
+              "from_page_id": "card_disputes",
+              "page_id": "dispute_documentation",
+              "page_title": "Documentation and Evidence",
+              "chosen_link_id": "disputes_documentation",
+              "reward": 0.09999999999999999,
+              "done": false,
+              "remaining_steps": 8
+            },
+            {
+              "step": 4,
+              "from_page_id": "dispute_documentation",
+              "page_id": "card_dispute_evidence_upload_form",
+              "page_title": "Card Dispute Evidence Upload Form",
+              "chosen_link_id": "docs_upload_form",
+              "reward": 1.0,
+              "done": true,
+              "remaining_steps": 7
+            }
+          ]
+        },
+        {
+          "task_id": "it_access_recovery",
+          "score": 0.99,
+          "summary": {
+            "task_id": "it_access_recovery",
+            "reached_target": true,
+            "actual_steps": 4,
+            "optimal_steps": 4,
+            "invalid_actions": 0,
+            "repeat_visits": 0,
+            "termination_reason": "target_reached",
+            "path": [
+              "it_home",
+              "identity_access",
+              "access_recovery",
+              "elevated_access_exceptions",
+              "privileged_access_recovery_exception_form"
+            ],
+            "visited_histogram": {
+              "it_home": 1,
+              "identity_access": 1,
+              "access_recovery": 1,
+              "elevated_access_exceptions": 1,
+              "privileged_access_recovery_exception_form": 1
+            },
+            "workflow_domain": "enterprise_it",
+            "difficulty": "expert",
+            "required_page_ids": [
+              "identity_access",
+              "access_recovery",
+              "elevated_access_exceptions"
+            ],
+            "checkpoints_visited": [
+              "identity_access",
+              "access_recovery",
+              "elevated_access_exceptions"
+            ],
+            "checkpoint_coverage": 1.0,
+            "ordered_checkpoint_completion": 1.0,
+            "start_distance_to_target": 4,
+            "end_distance_to_target": 0,
+            "page_count": 12,
+            "branching_factor": 1.5833333333333333,
+            "distractor_taxonomy": [
+              "password reset decoys",
+              "vpn lookalikes",
+              "service-desk loops"
+            ],
+            "grade": 0.99
+          },
+          "trajectory": [
+            {
+              "step": 0,
+              "page_id": "it_home",
+              "page_title": "LatticeWorks IT Portal",
+              "available_link_ids": [
+                "it_identity",
+                "it_service_desk",
+                "it_remote"
+              ],
+              "remaining_steps": 12
+            },
+            {
+              "step": 1,
+              "from_page_id": "it_home",
+              "page_id": "identity_access",
+              "page_title": "Identity and Access",
+              "chosen_link_id": "it_identity",
+              "reward": 0.09999999999999999,
+              "done": false,
+              "remaining_steps": 11
+            },
+            {
+              "step": 2,
+              "from_page_id": "identity_access",
+              "page_id": "access_recovery",
+              "page_title": "Access Recovery",
+              "chosen_link_id": "identity_recovery",
+              "reward": 0.09999999999999999,
+              "done": false,
+              "remaining_steps": 10
+            },
+            {
+              "step": 3,
+              "from_page_id": "access_recovery",
+              "page_id": "elevated_access_exceptions",
+              "page_title": "Elevated Access Exceptions",
+              "chosen_link_id": "recovery_exceptions",
+              "reward": 0.09999999999999999,
+              "done": false,
+              "remaining_steps": 9
+            },
+            {
+              "step": 4,
+              "from_page_id": "elevated_access_exceptions",
+              "page_id": "privileged_access_recovery_exception_form",
+              "page_title": "Privileged Access Recovery Exception Form",
+              "chosen_link_id": "exceptions_form",
+              "reward": 1.0,
+              "done": true,
+              "remaining_steps": 8
+            }
+          ]
+        },
+        {
+          "task_id": "permit_renewal",
+          "score": 0.99,
+          "summary": {
+            "task_id": "permit_renewal",
+            "reached_target": true,
+            "actual_steps": 4,
+            "optimal_steps": 4,
+            "invalid_actions": 0,
+            "repeat_visits": 0,
+            "termination_reason": "target_reached",
+            "path": [
+              "city_home",
+              "permits_center",
+              "renewal_requests",
+              "expedited_renewal",
+              "expedited_permit_renewal_supporting_documents_upload"
+            ],
+            "visited_histogram": {
+              "city_home": 1,
+              "permits_center": 1,
+              "renewal_requests": 1,
+              "expedited_renewal": 1,
+              "expedited_permit_renewal_supporting_documents_upload": 1
+            },
+            "workflow_domain": "government_services",
+            "difficulty": "expert",
+            "required_page_ids": [
+              "permits_center",
+              "renewal_requests",
+              "expedited_renewal"
+            ],
+            "checkpoints_visited": [
+              "permits_center",
+              "renewal_requests",
+              "expedited_renewal"
+            ],
+            "checkpoint_coverage": 1.0,
+            "ordered_checkpoint_completion": 1.0,
+            "start_distance_to_target": 4,
+            "end_distance_to_target": 0,
+            "page_count": 12,
+            "branching_factor": 1.5833333333333333,
+            "distractor_taxonomy": [
+              "new application decoys",
+              "inspection lookalikes",
+              "business licensing loops"
+            ],
+            "grade": 0.99
+          },
+          "trajectory": [
+            {
+              "step": 0,
+              "page_id": "city_home",
+              "page_title": "Stonebridge City Services",
+              "available_link_ids": [
+                "home_permits",
+                "home_business",
+                "home_help"
+              ],
+              "remaining_steps": 12
+            },
+            {
+              "step": 1,
+              "from_page_id": "city_home",
+              "page_id": "permits_center",
+              "page_title": "Permits and Licensing",
+              "chosen_link_id": "home_permits",
+              "reward": 0.09999999999999999,
+              "done": false,
+              "remaining_steps": 11
+            },
+            {
+              "step": 2,
+              "from_page_id": "permits_center",
+              "page_id": "renewal_requests",
+              "page_title": "Renewal Requests",
+              "chosen_link_id": "permits_renewals",
+              "reward": 0.09999999999999999,
+              "done": false,
+              "remaining_steps": 10
+            },
+            {
+              "step": 3,
+              "from_page_id": "renewal_requests",
+              "page_id": "expedited_renewal",
+              "page_title": "Expedited Renewal",
+              "chosen_link_id": "renewal_expedited",
+              "reward": 0.09999999999999999,
+              "done": false,
+              "remaining_steps": 9
+            },
+            {
+              "step": 4,
+              "from_page_id": "expedited_renewal",
+              "page_id": "expedited_permit_renewal_supporting_documents_upload",
+              "page_title": "Expedited Permit Renewal Supporting Documents Upload",
+              "chosen_link_id": "expedited_upload",
+              "reward": 1.0,
+              "done": true,
+              "remaining_steps": 8
+            }
+          ]
         }
       ],
-      "aggregate_score": 0.598,
-      "success_rate": 0.6,
+      "aggregate_score": 0.769,
+      "success_rate": 0.75,
       "mean_efficiency": 1.0
     },
     {
@@ -551,6 +973,24 @@
               "support_center": 1,
               "contact_support": 1
             },
+            "workflow_domain": "documentation_support",
+            "difficulty": "easy",
+            "required_page_ids": [
+              "support_center"
+            ],
+            "checkpoints_visited": [
+              "support_center"
+            ],
+            "checkpoint_coverage": 1.0,
+            "ordered_checkpoint_completion": 1.0,
+            "start_distance_to_target": 2,
+            "end_distance_to_target": 0,
+            "page_count": 6,
+            "branching_factor": 1.6666666666666667,
+            "distractor_taxonomy": [
+              "marketing navigation",
+              "pricing detour"
+            ],
             "grade": 0.99
           },
           "trajectory": [
@@ -612,6 +1052,29 @@
               "tuition_billing_forms": 1,
               "tuition_appeals_form": 1
             },
+            "workflow_domain": "student_services",
+            "difficulty": "medium",
+            "required_page_ids": [
+              "student_services",
+              "forms_library",
+              "tuition_billing_forms"
+            ],
+            "checkpoints_visited": [
+              "student_services",
+              "forms_library",
+              "tuition_billing_forms"
+            ],
+            "checkpoint_coverage": 1.0,
+            "ordered_checkpoint_completion": 1.0,
+            "start_distance_to_target": 4,
+            "end_distance_to_target": 0,
+            "page_count": 11,
+            "branching_factor": 1.7272727272727273,
+            "distractor_taxonomy": [
+              "financial aid detours",
+              "student life lookalikes",
+              "registrar cross-links"
+            ],
             "grade": 0.99
           },
           "trajectory": [
@@ -670,7 +1133,7 @@
         },
         {
           "task_id": "hard",
-          "score": 0.99,
+          "score": 0.98,
           "summary": {
             "task_id": "hard",
             "reached_target": true,
@@ -695,7 +1158,29 @@
               "reset_guides": 1,
               "emergency_access_reset_playbook": 1
             },
-            "grade": 0.99
+            "workflow_domain": "enterprise_it",
+            "difficulty": "hard",
+            "required_page_ids": [
+              "admin_console",
+              "secure_remote_signin",
+              "reset_guides"
+            ],
+            "checkpoints_visited": [
+              "admin_console",
+              "reset_guides"
+            ],
+            "checkpoint_coverage": 0.6666666666666666,
+            "ordered_checkpoint_completion": 0.3333333333333333,
+            "start_distance_to_target": 5,
+            "end_distance_to_target": 0,
+            "page_count": 14,
+            "branching_factor": 1.9285714285714286,
+            "distractor_taxonomy": [
+              "near-target decoys",
+              "looping support hubs",
+              "repeated access terminology"
+            ],
+            "grade": 0.98
           },
           "trajectory": [
             {
@@ -790,6 +1275,32 @@
               "prior_auth_escalation": 1,
               "prior_auth_escalation_worksheet": 1
             },
+            "workflow_domain": "healthcare_authorizations",
+            "difficulty": "expert",
+            "required_page_ids": [
+              "authorizations",
+              "prior_authorization_center",
+              "exception_escalation_requests",
+              "clinical_escalation_forms"
+            ],
+            "checkpoints_visited": [
+              "authorizations",
+              "prior_authorization_center",
+              "exception_escalation_requests",
+              "clinical_escalation_forms"
+            ],
+            "checkpoint_coverage": 1.0,
+            "ordered_checkpoint_completion": 1.0,
+            "start_distance_to_target": 6,
+            "end_distance_to_target": 0,
+            "page_count": 16,
+            "branching_factor": 1.75,
+            "distractor_taxonomy": [
+              "claims vs authorization ambiguity",
+              "appeals lookalikes",
+              "payer-policy detours",
+              "near-target escalation decoys"
+            ],
             "grade": 0.99
           },
           "trajectory": [
@@ -895,6 +1406,34 @@
               "after_hours_reversal_requests": 1,
               "after_hours_shutoff_reversal_form": 1
             },
+            "workflow_domain": "municipal_utilities",
+            "difficulty": "adversarial",
+            "required_page_ids": [
+              "utilities",
+              "service_interruptions",
+              "restoration_reconnection",
+              "emergency_restoration",
+              "after_hours_reversal_requests"
+            ],
+            "checkpoints_visited": [
+              "utilities",
+              "service_interruptions",
+              "restoration_reconnection",
+              "emergency_restoration",
+              "after_hours_reversal_requests"
+            ],
+            "checkpoint_coverage": 1.0,
+            "ordered_checkpoint_completion": 1.0,
+            "start_distance_to_target": 6,
+            "end_distance_to_target": 0,
+            "page_count": 20,
+            "branching_factor": 1.8,
+            "distractor_taxonomy": [
+              "emergency outage decoys",
+              "utility billing lookalikes",
+              "resident-service loops",
+              "near-target restoration pages"
+            ],
             "grade": 0.99
           },
           "trajectory": [
@@ -970,9 +1509,321 @@
               "remaining_steps": 7
             }
           ]
+        },
+        {
+          "task_id": "bank_dispute",
+          "score": 0.99,
+          "summary": {
+            "task_id": "bank_dispute",
+            "reached_target": true,
+            "actual_steps": 4,
+            "optimal_steps": 4,
+            "invalid_actions": 0,
+            "repeat_visits": 0,
+            "termination_reason": "target_reached",
+            "path": [
+              "bank_home",
+              "help_center",
+              "card_disputes",
+              "dispute_documentation",
+              "card_dispute_evidence_upload_form"
+            ],
+            "visited_histogram": {
+              "bank_home": 1,
+              "help_center": 1,
+              "card_disputes": 1,
+              "dispute_documentation": 1,
+              "card_dispute_evidence_upload_form": 1
+            },
+            "workflow_domain": "banking",
+            "difficulty": "expert",
+            "required_page_ids": [
+              "help_center",
+              "card_disputes",
+              "dispute_documentation"
+            ],
+            "checkpoints_visited": [
+              "help_center",
+              "card_disputes",
+              "dispute_documentation"
+            ],
+            "checkpoint_coverage": 1.0,
+            "ordered_checkpoint_completion": 1.0,
+            "start_distance_to_target": 4,
+            "end_distance_to_target": 0,
+            "page_count": 12,
+            "branching_factor": 1.6666666666666667,
+            "distractor_taxonomy": [
+              "fraud hotline lookalikes",
+              "chargeback policy detours",
+              "general support loops"
+            ],
+            "grade": 0.99
+          },
+          "trajectory": [
+            {
+              "step": 0,
+              "page_id": "bank_home",
+              "page_title": "Pine Street Bank",
+              "available_link_ids": [
+                "home_help",
+                "home_security",
+                "home_cards"
+              ],
+              "remaining_steps": 11
+            },
+            {
+              "step": 1,
+              "from_page_id": "bank_home",
+              "page_id": "help_center",
+              "page_title": "Help Center",
+              "chosen_link_id": "home_help",
+              "reward": 0.09999999999999999,
+              "done": false,
+              "remaining_steps": 10
+            },
+            {
+              "step": 2,
+              "from_page_id": "help_center",
+              "page_id": "card_disputes",
+              "page_title": "Card Disputes",
+              "chosen_link_id": "help_disputes",
+              "reward": 0.09999999999999999,
+              "done": false,
+              "remaining_steps": 9
+            },
+            {
+              "step": 3,
+              "from_page_id": "card_disputes",
+              "page_id": "dispute_documentation",
+              "page_title": "Documentation and Evidence",
+              "chosen_link_id": "disputes_documentation",
+              "reward": 0.09999999999999999,
+              "done": false,
+              "remaining_steps": 8
+            },
+            {
+              "step": 4,
+              "from_page_id": "dispute_documentation",
+              "page_id": "card_dispute_evidence_upload_form",
+              "page_title": "Card Dispute Evidence Upload Form",
+              "chosen_link_id": "docs_upload_form",
+              "reward": 1.0,
+              "done": true,
+              "remaining_steps": 7
+            }
+          ]
+        },
+        {
+          "task_id": "it_access_recovery",
+          "score": 0.99,
+          "summary": {
+            "task_id": "it_access_recovery",
+            "reached_target": true,
+            "actual_steps": 4,
+            "optimal_steps": 4,
+            "invalid_actions": 0,
+            "repeat_visits": 0,
+            "termination_reason": "target_reached",
+            "path": [
+              "it_home",
+              "identity_access",
+              "access_recovery",
+              "elevated_access_exceptions",
+              "privileged_access_recovery_exception_form"
+            ],
+            "visited_histogram": {
+              "it_home": 1,
+              "identity_access": 1,
+              "access_recovery": 1,
+              "elevated_access_exceptions": 1,
+              "privileged_access_recovery_exception_form": 1
+            },
+            "workflow_domain": "enterprise_it",
+            "difficulty": "expert",
+            "required_page_ids": [
+              "identity_access",
+              "access_recovery",
+              "elevated_access_exceptions"
+            ],
+            "checkpoints_visited": [
+              "identity_access",
+              "access_recovery",
+              "elevated_access_exceptions"
+            ],
+            "checkpoint_coverage": 1.0,
+            "ordered_checkpoint_completion": 1.0,
+            "start_distance_to_target": 4,
+            "end_distance_to_target": 0,
+            "page_count": 12,
+            "branching_factor": 1.5833333333333333,
+            "distractor_taxonomy": [
+              "password reset decoys",
+              "vpn lookalikes",
+              "service-desk loops"
+            ],
+            "grade": 0.99
+          },
+          "trajectory": [
+            {
+              "step": 0,
+              "page_id": "it_home",
+              "page_title": "LatticeWorks IT Portal",
+              "available_link_ids": [
+                "it_identity",
+                "it_service_desk",
+                "it_remote"
+              ],
+              "remaining_steps": 12
+            },
+            {
+              "step": 1,
+              "from_page_id": "it_home",
+              "page_id": "identity_access",
+              "page_title": "Identity and Access",
+              "chosen_link_id": "it_identity",
+              "reward": 0.09999999999999999,
+              "done": false,
+              "remaining_steps": 11
+            },
+            {
+              "step": 2,
+              "from_page_id": "identity_access",
+              "page_id": "access_recovery",
+              "page_title": "Access Recovery",
+              "chosen_link_id": "identity_recovery",
+              "reward": 0.09999999999999999,
+              "done": false,
+              "remaining_steps": 10
+            },
+            {
+              "step": 3,
+              "from_page_id": "access_recovery",
+              "page_id": "elevated_access_exceptions",
+              "page_title": "Elevated Access Exceptions",
+              "chosen_link_id": "recovery_exceptions",
+              "reward": 0.09999999999999999,
+              "done": false,
+              "remaining_steps": 9
+            },
+            {
+              "step": 4,
+              "from_page_id": "elevated_access_exceptions",
+              "page_id": "privileged_access_recovery_exception_form",
+              "page_title": "Privileged Access Recovery Exception Form",
+              "chosen_link_id": "exceptions_form",
+              "reward": 1.0,
+              "done": true,
+              "remaining_steps": 8
+            }
+          ]
+        },
+        {
+          "task_id": "permit_renewal",
+          "score": 0.99,
+          "summary": {
+            "task_id": "permit_renewal",
+            "reached_target": true,
+            "actual_steps": 4,
+            "optimal_steps": 4,
+            "invalid_actions": 0,
+            "repeat_visits": 0,
+            "termination_reason": "target_reached",
+            "path": [
+              "city_home",
+              "permits_center",
+              "renewal_requests",
+              "expedited_renewal",
+              "expedited_permit_renewal_supporting_documents_upload"
+            ],
+            "visited_histogram": {
+              "city_home": 1,
+              "permits_center": 1,
+              "renewal_requests": 1,
+              "expedited_renewal": 1,
+              "expedited_permit_renewal_supporting_documents_upload": 1
+            },
+            "workflow_domain": "government_services",
+            "difficulty": "expert",
+            "required_page_ids": [
+              "permits_center",
+              "renewal_requests",
+              "expedited_renewal"
+            ],
+            "checkpoints_visited": [
+              "permits_center",
+              "renewal_requests",
+              "expedited_renewal"
+            ],
+            "checkpoint_coverage": 1.0,
+            "ordered_checkpoint_completion": 1.0,
+            "start_distance_to_target": 4,
+            "end_distance_to_target": 0,
+            "page_count": 12,
+            "branching_factor": 1.5833333333333333,
+            "distractor_taxonomy": [
+              "new application decoys",
+              "inspection lookalikes",
+              "business licensing loops"
+            ],
+            "grade": 0.99
+          },
+          "trajectory": [
+            {
+              "step": 0,
+              "page_id": "city_home",
+              "page_title": "Stonebridge City Services",
+              "available_link_ids": [
+                "home_permits",
+                "home_business",
+                "home_help"
+              ],
+              "remaining_steps": 12
+            },
+            {
+              "step": 1,
+              "from_page_id": "city_home",
+              "page_id": "permits_center",
+              "page_title": "Permits and Licensing",
+              "chosen_link_id": "home_permits",
+              "reward": 0.09999999999999999,
+              "done": false,
+              "remaining_steps": 11
+            },
+            {
+              "step": 2,
+              "from_page_id": "permits_center",
+              "page_id": "renewal_requests",
+              "page_title": "Renewal Requests",
+              "chosen_link_id": "permits_renewals",
+              "reward": 0.09999999999999999,
+              "done": false,
+              "remaining_steps": 10
+            },
+            {
+              "step": 3,
+              "from_page_id": "renewal_requests",
+              "page_id": "expedited_renewal",
+              "page_title": "Expedited Renewal",
+              "chosen_link_id": "renewal_expedited",
+              "reward": 0.09999999999999999,
+              "done": false,
+              "remaining_steps": 9
+            },
+            {
+              "step": 4,
+              "from_page_id": "expedited_renewal",
+              "page_id": "expedited_permit_renewal_supporting_documents_upload",
+              "page_title": "Expedited Permit Renewal Supporting Documents Upload",
+              "chosen_link_id": "expedited_upload",
+              "reward": 1.0,
+              "done": true,
+              "remaining_steps": 8
+            }
+          ]
         }
       ],
-      "aggregate_score": 0.99,
+      "aggregate_score": 0.989,
       "success_rate": 1.0,
       "mean_efficiency": 1.0
     }

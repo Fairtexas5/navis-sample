@@ -13,7 +13,7 @@ if ROOT not in sys.path:
 
 from navis_web_env.server.app import app
 from navis_web_env.server.navis_web_environment import NavisWebEnvironment
-from navis_web_env.site_loader import list_task_ids, shortest_path_length, load_task
+from navis_web_env.site_loader import list_curriculum_task_ids, list_task_ids, shortest_path_length, load_task
 
 
 def _post_step(client: TestClient, click_link_id: str):
@@ -109,19 +109,47 @@ def test_loop_cap_termination_sets_reason_and_penalty():
 
 
 def test_task_catalog_and_shortest_paths_are_deterministic():
-    assert list_task_ids() == ["easy", "medium", "hard", "expert", "adversarial"]
+    assert list_task_ids() == [
+        "easy",
+        "medium",
+        "hard",
+        "expert",
+        "adversarial",
+        "bank_dispute",
+        "it_access_recovery",
+        "permit_renewal",
+    ]
+    assert list_curriculum_task_ids() == ["curriculum_easy", "curriculum_medium", "curriculum_hard"]
 
     easy = load_task("easy")
     medium = load_task("medium")
     hard = load_task("hard")
     expert = load_task("expert")
     adversarial = load_task("adversarial")
+    bank_dispute = load_task("bank_dispute")
+    it_access_recovery = load_task("it_access_recovery")
+    permit_renewal = load_task("permit_renewal")
+    curriculum_medium = load_task("curriculum_medium")
 
     assert shortest_path_length(easy, easy.start_page_id) == 2
     assert shortest_path_length(medium, medium.start_page_id) == 4
     assert shortest_path_length(hard, hard.start_page_id) == 5
     assert shortest_path_length(expert, expert.start_page_id) == 6
     assert shortest_path_length(adversarial, adversarial.start_page_id) == 6
+    assert shortest_path_length(bank_dispute, bank_dispute.start_page_id) == 4
+    assert shortest_path_length(it_access_recovery, it_access_recovery.start_page_id) == 4
+    assert shortest_path_length(permit_renewal, permit_renewal.start_page_id) == 4
+    assert shortest_path_length(curriculum_medium, curriculum_medium.start_page_id) == 5
+
+
+def test_curriculum_tasks_are_deterministic_and_include_required_checkpoints():
+    first = load_task("curriculum_hard")
+    second = load_task("curriculum_hard")
+
+    assert first.goal_instruction == second.goal_instruction
+    assert first.target_page_id == second.target_page_id
+    assert first.required_page_ids == ["intake_hub", "workflow_center"]
+    assert first.difficulty == "hard"
 
 
 def test_http_endpoints_expose_health_schema_and_state():

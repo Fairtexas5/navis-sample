@@ -63,15 +63,32 @@ The exported state includes the OpenEnv base metadata plus environment-specific 
 
 ## Tasks
 
-The environment ships with 5 deterministic tasks:
+The environment ships with 8 authored deterministic tasks plus 3 deterministic curriculum-generated tasks.
+
+Core tasks:
 
 - `easy`: 2-3 clicks with light distraction and no meaningful loops
 - `medium`: 4-6 clicks with semantically plausible detours
 - `hard`: 6-9 clicks with loops, repeated terminology, and near-target decoys
 - `expert`: 6-step provider-portal workflow with claims/authorization ambiguity and escalation-form decoys
 - `adversarial`: 5-step city-services utility workflow with emergency/outage lookalikes and reversal-form decoys
+- `bank_dispute`: banking dispute-evidence workflow with fraud-hotline and policy decoys
+- `it_access_recovery`: enterprise privileged-access recovery workflow with password-reset and service-desk lookalikes
+- `permit_renewal`: government permit-renewal workflow with new-application and inspection detours
+
+Curriculum-generated tasks:
+
+- `curriculum_easy`
+- `curriculum_medium`
+- `curriculum_hard`
 
 The tasks are defined under [`navis_web_env/sites`](./navis_web_env/sites).
+
+Each task can now include workflow metadata such as:
+
+- `workflow_domain`
+- `difficulty`
+- `required_page_ids`
 
 ## Reward Shaping
 
@@ -93,11 +110,12 @@ Episodes terminate on:
 
 ## Graders
 
-Task graders are deterministic project-level functions. They score the final episode summary strictly inside `(0.0, 1.0)`:
+Task graders are deterministic project-level functions. They score the final episode summary strictly inside `(0.0, 1.0)` using partial credit across multiple dimensions:
 
 - `0.99` for an optimal successful route
-- `0.7-0.99` for successful but inefficient routes
-- `0.01` for failure
+- `0.7-0.99` for successful but inefficient or noisy routes
+- partial credit below `0.7` for substantial progress on the correct workflow
+- `0.01` for empty or fully failed runs
 
 Grader-facing episode summaries include:
 
@@ -108,6 +126,11 @@ Grader-facing episode summaries include:
 - `invalid_actions`
 - `repeat_visits`
 - `termination_reason`
+- `checkpoint_coverage`
+- `ordered_checkpoint_completion`
+- `start_distance_to_target`
+- `end_distance_to_target`
+- `workflow_domain`
 
 ## Local Development
 
@@ -195,7 +218,7 @@ Example oracle run:
 python inference.py
 ```
 
-All modes run all tasks in fixed order and save a reproducible report to `outputs/evals/baseline.json`.
+All modes run the authored task pack in fixed order and save a reproducible report to `outputs/evals/baseline.json`.
 
 ## Expected Baseline Outputs
 
@@ -230,6 +253,24 @@ The trajectory artifacts are useful for demos because they show:
 - the start page
 - the exact path the policy followed
 - where loops or detours appeared
+
+## Curriculum Generator
+
+The project also includes a deterministic curriculum generator for additional training tasks. Generated tasks are available through the loader as:
+
+- `curriculum_easy`
+- `curriculum_medium`
+- `curriculum_hard`
+
+Example:
+
+```python
+from navis_web_env import generate_curriculum_task
+
+task = generate_curriculum_task("curriculum_medium")
+print(task.goal_instruction)
+print(task.required_page_ids)
+```
 
 ## Testing
 

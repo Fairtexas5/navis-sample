@@ -1,6 +1,6 @@
 # Trajectory: heuristic / medium
 
-- Score: `0.010`
+- Score: `0.240`
 - Path: `landing -> student_services -> forms_library -> financial_aid_forms -> paying_for_college -> financial_aid_forms -> paying_for_college -> financial_aid_forms -> paying_for_college`
 
 ```mermaid
